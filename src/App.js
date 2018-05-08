@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import CalculatorContainer from './containers/CalculatorContainer';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import * as reducers from './redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+
+const appReducer = combineReducers(reducers);
+
+function rootReducer(state, action) {
+  return appReducer(state, action);
+}
+
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  compose(
+    applyMiddleware(thunk),
+  ),
+);
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Provider store={store}>
+        <div className="app">
+          <CalculatorContainer />
+        </div>
+      </Provider>
     );
   }
 }
