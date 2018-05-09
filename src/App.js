@@ -3,17 +3,11 @@ import './App.css';
 import CalculatorContainer from './containers/CalculatorContainer';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import * as reducers from './redux';
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-
-const appReducer = combineReducers(reducers);
-
-function rootReducer(state, action) {
-  return appReducer(state, action);
-}
+import calculations from './redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 
 const store = createStore(
-  rootReducer,
+  calculations,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   compose(
     applyMiddleware(thunk),

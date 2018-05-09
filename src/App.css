@@ -1,5 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body,
+#root,
 .app {
   height: 100%;
 }
@@ -8,4 +13,29 @@ body,
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.calculator {
+  border: 1px solid black;
+  max-width: 15rem;
+  width: 100%;
+}
+
+.calculator__display {
+  padding: 1rem;
+  text-align: right;
+  border-bottom: 1px solid black;
+}
+
+.calculator__body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calculator__key {
+  width: 25%;
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  user-select: none;
 }
