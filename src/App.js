@@ -19,6 +19,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="app">
+          <h1>DCMN Calculator Challenge</h1>
           <CalculatorContainer />
         </div>
       </Provider>
