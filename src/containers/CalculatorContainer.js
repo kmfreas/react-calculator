@@ -25,11 +25,13 @@ class CalculatorContainer extends Component {
         this.props.dispatch(handleAddOperand(key));
         break;
       default:
+        // reset calculations if a number is clicked and the last key was the equals sign
         if (this.lastKey === '=') {
           this.props.dispatch(clearCalculations());
         }
         this.props.dispatch(handleAddNumber(key));
       }
+
       this.lastKey = key;
     }
 
