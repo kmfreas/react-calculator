@@ -36,6 +36,10 @@ export function handleAddNumber(num) {
     const state = getState();
     const last = state[state.length - 1] || '';
 
+    if (num === '.' && last.indexOf('.') >= 0) {
+      return;
+    }
+
     if (!state.length || (state[state.length - 1] !== '+' && state[state.length - 1] !== '-')) {
       dispatch(addNumber(last + num, state.length - 1));
     } else {
